@@ -14,6 +14,7 @@ This is a backend REST API project developed using Spring Boot to display accoun
 
 ## Build and Run
 * mvn clean install && mvn spring-boot:run or java -jar target/WholesaleAccounts.jar or mvn exec:java -Dexec.mainClass="org.anz.wholesale.WholesaleAccountsApplication"
+* docker pull hariharank12/wholesale-accounts:1.0-SNAPSHOT
 * docker run -p 8080:8080 hariharank12/wholesale-accounts:1.0-SNAPSHOT
 
 ## Endpoints and sample responses
