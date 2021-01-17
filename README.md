@@ -169,4 +169,7 @@ openingAvailableBalance: 10
 ]
 ]
 ```
-
+* SpringProfileEndpoint - http://localhost:8080/Wholesale/spring/profile
+```
+CustomerConfiguration{host='tmp.staginghost.alamelu', port='9090'}
+```
