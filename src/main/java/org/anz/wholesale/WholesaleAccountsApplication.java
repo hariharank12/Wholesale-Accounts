@@ -6,6 +6,7 @@ package org.anz.wholesale;
  */
 
 
+import org.anz.wholesale.config.CustomerConfiguration;
 import org.anz.wholesale.entity.Account;
 import org.anz.wholesale.entity.Transaction;
 import org.anz.wholesale.repository.AccountRepository;
@@ -32,6 +33,9 @@ public class WholesaleAccountsApplication implements CommandLineRunner {
     @Autowired
     private TransactionRepository transactionRepository;
 
+    @Autowired
+    private CustomerConfiguration customerConfiguration;
+
     public static void main( String[] args )
     {
         SpringApplication.run(WholesaleAccountsApplication.class, args);
@@ -40,6 +44,8 @@ public class WholesaleAccountsApplication implements CommandLineRunner {
     @Override
     @Transactional
     public void run(String... strings) throws Exception {
+        logger.info("Inspecting customer configuration");
+        customerConfiguration.toString();
         logger.info("Inspecting beans");
         accountRepository.save(new Account(new Long(1), "user1","100001","Account IN","Saving",new Date(), "IND", new BigDecimal("10")));
         accountRepository.save(new Account(new Long(2), "user1","100001","Account IN","Saving",new Date(), "IND", new BigDecimal("20")));
