@@ -21,7 +21,7 @@ This is a backend REST API project developed using Spring Boot to display accoun
 * java -jar target/WholesaleAccounts.jar --spring.config.location="file:///tmp/Wholesale-Accounts/config/application-staging-tmp.properties"
 * java -jar -Dspring.config.location=file:///tmp/Wholesale-Accounts/config/application-staging-tmp.properties target/WholesaleAccounts.jar
 * mvn spring-boot:run -Dspring.config.location="file:///tmp/Wholesale-Accounts/config/application-staging-tmp.properties" #notWorking
-* java -Dspring.config.location=classpath:/application-staging-tmp.properties -cp app:app/lib/*:/tmp/Wholesale-Accounts/config/* org.anz.wholesale.WholesaleAccountsApplication #notworking
+* java -Dspring.config.location=classpath:/application-staging-tmp.properties -cp app:app/lib/*:/tmp/Wholesale-Accounts/config/* org.anz.wholesale.WholesaleAccountsApplication
 * docker pull hariharank12/wholesale-accounts:1.0-SNAPSHOT
 * docker build -t hariharank12/wholesale-accounts:1.0-SNAPSHOT .
 * docker run -p 8080:8080 hariharank12/wholesale-accounts:1.0-SNAPSHOT
