@@ -44,9 +44,6 @@ public class WholesaleAccountsApplication implements CommandLineRunner {
     @Override
     @Transactional
     public void run(String... strings) throws Exception {
-        logger.info("Inspecting customer configuration");
-        customerConfiguration.toString();
-        logger.info("Inspecting beans");
         accountRepository.save(new Account(new Long(1), "user1","100001","Account IN","Saving",new Date(), "IND", new BigDecimal("10")));
         accountRepository.save(new Account(new Long(2), "user1","100001","Account IN","Saving",new Date(), "IND", new BigDecimal("20")));
         accountRepository.save(new Account(new Long(3), "user1","100001","Account IN","Saving",new Date(), "IND", new BigDecimal("30")));
@@ -57,7 +54,5 @@ public class WholesaleAccountsApplication implements CommandLineRunner {
         transactionRepository.save(new Transaction(new Long(3), new Account(new Long(1), "user1","100001","Account IN","Saving",new Date(), "IND", new BigDecimal("10")),"AUD", new Date(),new BigDecimal("300"),null,"Debit", "801100001","TXN 801100001"));
         transactionRepository.save(new Transaction(new Long(4), new Account(new Long(4), "user1","100006","Account IN","Saving",new Date(), "IND", new BigDecimal("40")),"AUD", new Date(),new BigDecimal("400"),null,"Debit", "801100001","TXN 801100001"));
         transactionRepository.save(new Transaction(new Long(5), new Account(new Long(4), "user1","100006","Account IN","Saving",new Date(), "IND", new BigDecimal("40")),"AUD", new Date(),new BigDecimal("500"),null,"Debit", "801100001","TXN 801100001"));
-        accountRepository.findAll().forEach(x -> System.out.println(x));
-        transactionRepository.findAll().forEach(x -> System.out.println(x));
     }
 }
