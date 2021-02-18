@@ -21,4 +21,12 @@ public class WholesaleAccountsExceptionHandler extends ResponseEntityExceptionHa
 
     }
 
+    @ExceptionHandler(InvalidRequestException.class)
+    public ResponseEntity<?> handleInvalidRequest(InvalidRequestException invalidRequestException) {
+        GlobalError globalError = new GlobalError(invalidRequestException.getMessage(),
+                HttpStatus.BAD_REQUEST.getReasonPhrase());
+        return new ResponseEntity<>(globalError, HttpStatus.BAD_REQUEST);
+
+    }
+
 }

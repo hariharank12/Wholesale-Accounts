@@ -2,10 +2,13 @@ package org.anz.wholesale.service;
 
 import org.anz.wholesale.entity.Account;
 import org.anz.wholesale.entity.Transaction;
+import org.anz.wholesale.exception.InvalidRequestException;
 import org.anz.wholesale.repository.AccountRepository;
 import org.anz.wholesale.repository.TransactionRepository;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
@@ -18,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.CoreMatchers.is;
 
 @RunWith(SpringRunner.class)
 /**
@@ -29,6 +33,9 @@ public class AccountServiceTest {
 
     @MockBean
     private TransactionRepository transactionRepository;
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     private AccountService accountService;
 
@@ -58,6 +65,16 @@ public class AccountServiceTest {
     }
 
     @Test
+    public void whenUserIdIsNull() {
+        String userId = null;
+        thrown.expect(InvalidRequestException.class);
+        thrown.expectMessage(is("UserId cannot be null"));
+        Pageable pageable = PageRequest.of(0, 10);
+        Mockito.when(accountRepository.findAllAccountsByUserId(userId, pageable)).thenReturn(new ArrayList<Account>());
+        accountService.getAccounts(userId, pageable);
+    }
+
+    @Test
     public void whenTransactionFoundForAccountNo() {
         String accountNumber = "1100001";
         Pageable pageable = PageRequest.of(0, 10);
@@ -69,6 +86,17 @@ public class AccountServiceTest {
     @Test
     public void whenTransactionNotFoundForAccountNo() {
         String accountNumber = "1100001";
+        Pageable pageable = PageRequest.of(0, 10);
+        Mockito.when(transactionRepository.findAllTransactionsByAccountNumber(accountNumber, pageable)).thenReturn(new ArrayList<Transaction>());
+        List<Transaction> txnList = accountService.getTransactions(accountNumber, pageable);
+        assertThat(txnList.size()).isEqualTo(0);
+    }
+
+    @Test
+    public void whenAccountNoIsNull() {
+        String accountNumber = null;
+        thrown.expect(InvalidRequestException.class);
+        thrown.expectMessage(is("AccountNumber cannot be null"));
         Pageable pageable = PageRequest.of(0, 10);
         Mockito.when(transactionRepository.findAllTransactionsByAccountNumber(accountNumber, pageable)).thenReturn(new ArrayList<Transaction>());
         List<Transaction> txnList = accountService.getTransactions(accountNumber, pageable);

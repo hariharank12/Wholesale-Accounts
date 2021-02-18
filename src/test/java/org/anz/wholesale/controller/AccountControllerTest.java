@@ -1,6 +1,7 @@
 package org.anz.wholesale.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.anz.wholesale.config.CustomerConfiguration;
 import org.anz.wholesale.entity.Account;
 import org.anz.wholesale.entity.Transaction;
 import org.anz.wholesale.repository.AccountRepository;
@@ -44,6 +45,9 @@ public class AccountControllerTest {
 
     @MockBean
     private TransactionRepository transactionRepository;
+
+    @MockBean
+    private CustomerConfiguration customerConfiguration;
 
     @Autowired
     private MockMvc mvc;
