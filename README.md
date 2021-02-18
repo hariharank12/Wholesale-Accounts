@@ -13,6 +13,7 @@ This is a backend REST API project developed using Spring Boot to display accoun
 * Uses Junit and Mockito for testing. 
 * Application is containerized, can be run using docker.
 * Uses spotify docker plugin to build docker image as part of maven life cycle.
+* Swagger is used for API documentation. 
 
 ## Build and Run
 * mvn clean install && mvn spring-boot:run or java -jar target/WholesaleAccounts.jar or mvn exec:java -Dexec.mainClass="org.anz.wholesale.WholesaleAccountsApplication"
@@ -169,6 +170,7 @@ openingAvailableBalance: 10
 ]
 ]
 ```
+* Swagger Endpoint - http://localhost:8080/Wholesale/swagger-ui.html#/
 * SpringProfileEndpoint - http://localhost:8080/Wholesale/spring/profile
 ```
 CustomerConfiguration{host='tmp.staginghost.alamelu', port='9090'}
