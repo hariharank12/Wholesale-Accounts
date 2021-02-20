@@ -25,9 +25,12 @@ import java.util.List;
 
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.mockito.BDDMockito.given;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.request
+        .MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result
+        .MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result
+        .MockMvcResultMatchers.status;
 
 
 /**
@@ -59,8 +62,10 @@ public class AccountControllerTest {
     }
 
     @Test
-    public void givenUserId_whenGetAccount_thenReturnJsonArray() throws Exception {
-        given(accountService.getAccounts("user1", PageRequest.of(0, 10))).willReturn(getAccountList());
+    public void givenUserId_whenGetAccount_thenReturnJsonArray() throws
+            Exception {
+        given(accountService.getAccounts("user1", PageRequest.of(0, 10)))
+                .willReturn(getAccountList());
         mvc.perform(get("/accounts/{userId}?page=0&size=10", "user1")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -68,46 +73,58 @@ public class AccountControllerTest {
     }
 
     @Test
-    public void givenUserId_whenGetAccount_thenThrowResourceNotFoundException() throws Exception {
+    public void givenUserId_whenGetAccount_thenThrowResourceNotFoundException
+            () throws Exception {
         String userId = "user30x";
         mvc.perform(get("/accounts/{userId}?page=0&size=10", userId)
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.message").value("No Accounts found for user "+ userId))
+                .andExpect(jsonPath("$.message").value("No Accounts found for" +
+                        " user " + userId))
                 .andExpect(jsonPath("$.errorReason").value("Not Found"))
                 .andExpect(status().isNotFound());
     }
 
     @Test
-    public void givenAccountNumber_whenGetTransaction_thenReturnJsonArray() throws Exception {
+    public void givenAccountNumber_whenGetTransaction_thenReturnJsonArray()
+            throws Exception {
         String accountNumber = getAccountList().get(0).getAccountNumber();
-        given(accountService.getAccounts("user1", PageRequest.of(0, 10))).willReturn(getAccountList());
-        given(accountService.getTransactions(accountNumber, PageRequest.of(0, 10))).willReturn(getTxnList());
-        mvc.perform(get("/accounts/{accountNumber}/transactions?page=0&size=10", accountNumber)
+        given(accountService.getAccounts("user1", PageRequest.of(0, 10)))
+                .willReturn(getAccountList());
+        given(accountService.getTransactions(accountNumber, PageRequest.of(0,
+                10))).willReturn(getTxnList());
+        mvc.perform(get("/accounts/{accountNumber}/transactions?page=0&size" +
+                "=10", accountNumber)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", hasSize(1)));
     }
 
     @Test
-    public void givenAccountNumber_whenGetTransaction_thenThrowResourceNotFoundException() throws Exception {
+    public void
+    givenAccountNumber_whenGetTransaction_thenThrowResourceNotFoundException
+            () throws Exception {
         String accountNumber = "accountNumber30x";
-        mvc.perform(get("/accounts/{accountNumber}/transactions?page=0&size=10", accountNumber)
+        mvc.perform(get("/accounts/{accountNumber}/transactions?page=0&size" +
+                "=10", accountNumber)
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.message").value("Given accountNumber not found "+ accountNumber))
+                .andExpect(jsonPath("$.message").value("Given accountNumber " +
+                        "not found " + accountNumber))
                 .andExpect(jsonPath("$.errorReason").value("Not Found"))
                 .andExpect(status().isNotFound());
     }
 
     private List<Account> getAccountList() {
         List<Account> accountList = new ArrayList<Account>();
-        Account account = Account.builder().id(1L).accountNumber("110001").accountName("Account AU").build();
+        Account account = Account.builder().id(1L).accountNumber("110001")
+                .accountName("Account AU").build();
         accountList.add(account);
         return accountList;
     }
 
     private List<Transaction> getTxnList() {
         List<Transaction> txnList = new ArrayList<Transaction>();
-        Account account = Account.builder().id(1L).accountNumber("110001").accountName("Account AU").build();
+        Account account = Account.builder().id(1L).accountNumber("110001")
+                .accountName("Account AU").build();
         Transaction txn = Transaction.builder().account(account).build();
         txnList.add(txn);
         return txnList;

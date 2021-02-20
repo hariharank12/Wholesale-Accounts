@@ -1,8 +1,6 @@
 package org.anz.wholesale.config;
 
 import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,8 +12,6 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 public class CustomerConfiguration {
 
-    private static final Logger logger = LoggerFactory.getLogger(CustomerConfiguration.class);
-
     @Value("${customer.host}")
     private String customerHost;
 
@@ -24,11 +20,13 @@ public class CustomerConfiguration {
 
     @Override
     public String toString() {
-        logger.debug("Customer Configuration details host {} and port {}", customerHost, customerPort);
+        log.debug("Customer Configuration details host {} and port {}",
+                customerHost, customerPort);
 
         return "CustomerConfiguration{" +
                 "host='" + customerHost + '\'' +
                 ", port='" + customerPort + '\'' +
                 '}';
     }
+
 }

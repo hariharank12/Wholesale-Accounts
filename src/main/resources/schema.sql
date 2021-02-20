@@ -1,4 +1,4 @@
-CREATE TABLE ACCOUNT (
+CREATE TABLE ACCOUNTS (
     id INT NOT NULL,
     user_id VARCHAR(50) NOT NULL,
     account_number VARCHAR(100) NOT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE ACCOUNT (
     UNIQUE (account_number)
 );
 
-CREATE TABLE TRANSACTION (
+CREATE TABLE TRANSACTIONS (
     id INT NOT NULL,
     account_id INT NOT NULL,
     value_date DATE,
@@ -21,5 +21,5 @@ CREATE TABLE TRANSACTION (
     debit_credit VARCHAR(50) NOT NULL,
     transaction_number VARCHAR(100) NOT NULL,
     transaction_narrative VARCHAR (200),
-    FOREIGN KEY (account_id) REFERENCES ACCOUNT (id)
+    FOREIGN KEY (account_id) REFERENCES ACCOUNTS (id)
 );

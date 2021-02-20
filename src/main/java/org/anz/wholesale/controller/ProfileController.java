@@ -20,7 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 @Validated
 public class ProfileController {
 
-    private static final Logger logger = LoggerFactory.getLogger(ProfileController.class);
+    private static final Logger logger = LoggerFactory.getLogger
+            (ProfileController.class);
 
     private CustomerConfiguration customerConfiguration;
 
