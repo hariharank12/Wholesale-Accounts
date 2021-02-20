@@ -171,6 +171,14 @@ openingAvailableBalance: 10
 ]
 ```
 * Swagger Endpoint - http://localhost:8080/Wholesale/swagger-ui.html#/
+```
+Endpoints - getAccountsForUser & getTransactionsForAccounts
+
+```
+* H2 database console - http://localhost:8080/Wholesale/h2
+```
+jdbc url = jdbc:h2:mem:accountdb, username = sa, password =
+```
 * SpringProfileEndpoint - http://localhost:8080/Wholesale/spring/profile
 ```
 CustomerConfiguration{host='tmp.staginghost.alamelu', port='9090'}
