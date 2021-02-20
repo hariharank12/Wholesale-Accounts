@@ -48,16 +48,6 @@ public class AccountService {
         if (userId == null) {
             throw new InvalidRequestException("UserId cannot be null");
         }
-/*
-        Account account = accountRepository.findByAccountNumber("100001");
-        log.debug("Account {}", account);
-        log.debug("Transactions {}", account.getTransactions());
-        List<Transaction> transactions = transactionRepository
-                .findByAccountAccountNumber
-                ("100001",
-                pageable);
-        log.debug("Transactions repo {}", transactions);
-*/
         return accountRepository.findAllAccountsByUserId(userId, pageable);
     }
 
@@ -73,7 +63,7 @@ public class AccountService {
         if (accountNumber == null) {
             throw new InvalidRequestException("AccountNumber cannot be null");
         }
-        return transactionRepository.findAllTransactionsByAccountNumber
+        return transactionRepository.findByAccountAccountNumber
                 (accountNumber, pageable);
     }
 

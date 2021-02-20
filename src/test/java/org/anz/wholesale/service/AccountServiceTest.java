@@ -85,7 +85,7 @@ public class AccountServiceTest {
     public void whenTransactionFoundForAccountNo() {
         String accountNumber = "1100001";
         Pageable pageable = PageRequest.of(0, 10);
-        Mockito.when(transactionRepository.findAllTransactionsByAccountNumber
+        Mockito.when(transactionRepository.findByAccountAccountNumber
                 (accountNumber, pageable)).thenReturn(getTxnList());
         List<Transaction> txnList = accountService.getTransactions
                 (accountNumber, pageable);
@@ -96,7 +96,7 @@ public class AccountServiceTest {
     public void whenTransactionNotFoundForAccountNo() {
         String accountNumber = "1100001";
         Pageable pageable = PageRequest.of(0, 10);
-        Mockito.when(transactionRepository.findAllTransactionsByAccountNumber
+        Mockito.when(transactionRepository.findByAccountAccountNumber
                 (accountNumber, pageable)).thenReturn(new
                 ArrayList<Transaction>());
         List<Transaction> txnList = accountService.getTransactions
@@ -110,7 +110,7 @@ public class AccountServiceTest {
         thrown.expect(InvalidRequestException.class);
         thrown.expectMessage(is("AccountNumber cannot be null"));
         Pageable pageable = PageRequest.of(0, 10);
-        Mockito.when(transactionRepository.findAllTransactionsByAccountNumber
+        Mockito.when(transactionRepository.findByAccountAccountNumber
                 (accountNumber, pageable)).thenReturn(new
                 ArrayList<Transaction>());
         List<Transaction> txnList = accountService.getTransactions

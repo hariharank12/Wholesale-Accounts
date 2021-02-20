@@ -23,12 +23,4 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
     List<Account> findAllAccountsByUserId(final String userId, final Pageable
             pageable);
 
-    /**
-     * Find by account number account.
-     *
-     * @param accountNumber the account number
-     * @return the account
-     */
-    Account findByAccountNumber(final String accountNumber);
-
 }

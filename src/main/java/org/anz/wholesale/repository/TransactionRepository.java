@@ -23,11 +23,6 @@ public interface TransactionRepository extends JpaRepository<Transaction,
      * @param pageable      the pageable
      * @return the list
      */
-    @Query("FROM Transaction t INNER JOIN t.account a where a.accountNumber ="
-            + " :accountNumber order by t.valueDate desc")
-    List<Transaction> findAllTransactionsByAccountNumber(@Param("accountNumber")
-            final String accountNumber, final Pageable pageable);
-
     List<Transaction> findByAccountAccountNumber(@Param("accountNumber")
                                                  final String accountNumber,
                                                  final Pageable pageable);
