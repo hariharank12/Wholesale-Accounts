@@ -46,7 +46,7 @@ public class AccountController {
         this.accountService = accountService;
     }
 
-    @GetMapping(value = "/{userId}")
+    @GetMapping(value = "/users/{userId}")
     public ResponseEntity<List<Account>> getAccountsForUser(
             @RequestParam(value = "page", defaultValue = defaultPage)
             @PositiveOrZero int page,

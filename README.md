@@ -31,7 +31,8 @@ This is a backend REST API project developed using Spring Boot to display accoun
 * docker run -e JAVA_OPTS="-Dspring.config.location=file:///tmp/Wholesale-Accounts/config/application-staging-tmp.properties" -p 8080:8080 hariharank12/wholesale-accounts:1.0-SNAPSHOT #notworking #noNeed
 
 ## Endpoints and sample responses
-* AccountsEndpoint - http://localhost:8080/Wholesale/accounts/user1?page=0&size=10
+* AccountsEndpoint - http://localhost:8080/Wholesale/accounts/users/user1?page=0
+&size=10
 ```
 [
 {
@@ -40,49 +41,19 @@ userId: "user1",
 accountNumber: "100001",
 accountName: "Account IN",
 accountType: "Saving",
-balanceDate: "2019-08-21T22:11:25.377+0000",
-currency: "IND",
+balanceDate: "2021-03-13T06:37:04.378+0000",
+currency: "INR",
 openingAvailableBalance: 10
-},
-{
-id: 2,
-userId: "user1",
-accountNumber: "100001",
-accountName: "Account IN",
-accountType: "Saving",
-balanceDate: "2019-08-21T22:11:25.452+0000",
-currency: "IND",
-openingAvailableBalance: 20
-},
-{
-id: 3,
-userId: "user1",
-accountNumber: "100001",
-accountName: "Account IN",
-accountType: "Saving",
-balanceDate: "2019-08-21T22:11:25.454+0000",
-currency: "IND",
-openingAvailableBalance: 30
-},
-{
-id: 4,
-userId: "user1",
-accountNumber: "100006",
-accountName: "Account IN",
-accountType: "Saving",
-balanceDate: "2019-08-21T22:11:25.455+0000",
-currency: "IND",
-openingAvailableBalance: 40
 },
 {
 id: 5,
 userId: "user1",
-accountNumber: "100006",
-accountName: "Account IN",
+accountNumber: "100002",
+accountName: "Account NZ",
 accountType: "Saving",
-balanceDate: "2019-08-21T22:11:25.457+0000",
-currency: "IND",
-openingAvailableBalance: 50
+balanceDate: "2021-03-13T06:37:04.378+0000",
+currency: "AUD",
+openingAvailableBalance: 20
 }
 ]
 
@@ -91,66 +62,10 @@ openingAvailableBalance: 50
 * TransactionEndpoint - http://localhost:8080/Wholesale/accounts/100001/transactions?page=0&size=10
 ```
 [
-[
-{},
 {
-id: 1,
-userId: "user1",
-accountNumber: "100001",
-accountName: "Account IN",
-accountType: "Saving",
-balanceDate: "2019-08-21T22:11:25.377+0000",
-currency: "IND",
-openingAvailableBalance: 10
-}
-],
-[
-{
-id: 7,
-account: {
-id: 1,
-userId: "user1",
-accountNumber: "100001",
-accountName: "Account IN",
-accountType: "Saving",
-balanceDate: "2019-08-21T22:11:25.377+0000",
-currency: "IND",
-openingAvailableBalance: 10
-},
+id: 2,
 currency: "AUD",
-valueDate: "2019-08-21T22:11:25.470+0000",
-debitAmount: 200,
-creditAmount: null,
-debitCredit: "Debit",
-transactionNumber: "801100001",
-transactionNarrative: "TXN 801100001"
-},
-{
-id: 1,
-userId: "user1",
-accountNumber: "100001",
-accountName: "Account IN",
-accountType: "Saving",
-balanceDate: "2019-08-21T22:11:25.377+0000",
-currency: "IND",
-openingAvailableBalance: 10
-}
-],
-[
-{
-id: 6,
-account: {
-id: 1,
-userId: "user1",
-accountNumber: "100001",
-accountName: "Account IN",
-accountType: "Saving",
-balanceDate: "2019-08-21T22:11:25.377+0000",
-currency: "IND",
-openingAvailableBalance: 10
-},
-currency: "AUD",
-valueDate: "2019-08-21T22:11:25.458+0000",
+valueDate: "2021-03-13T06:37:04.379+0000",
 debitAmount: 100,
 creditAmount: null,
 debitCredit: "Debit",
@@ -158,16 +73,25 @@ transactionNumber: "801100001",
 transactionNarrative: "TXN 801100001"
 },
 {
-id: 1,
-userId: "user1",
-accountNumber: "100001",
-accountName: "Account IN",
-accountType: "Saving",
-balanceDate: "2019-08-21T22:11:25.377+0000",
-currency: "IND",
-openingAvailableBalance: 10
+id: 3,
+currency: "AUD",
+valueDate: "2021-03-13T06:37:04.380+0000",
+debitAmount: 200,
+creditAmount: null,
+debitCredit: "Debit",
+transactionNumber: "801100002",
+transactionNarrative: "TXN 801100001"
+},
+{
+id: 4,
+currency: "AUD",
+valueDate: "2021-03-13T06:37:04.380+0000",
+debitAmount: 300,
+creditAmount: null,
+debitCredit: "Debit",
+transactionNumber: "801100003",
+transactionNarrative: "TXN 801100001"
 }
-]
 ]
 ```
 * Swagger Endpoint - http://localhost:8080/Wholesale/swagger-ui.html#/

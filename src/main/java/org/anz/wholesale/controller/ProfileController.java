@@ -20,9 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 @Validated
 public class ProfileController {
 
-    private static final Logger logger = LoggerFactory.getLogger
-            (ProfileController.class);
-
     private CustomerConfiguration customerConfiguration;
 
     @Autowired
@@ -32,7 +29,7 @@ public class ProfileController {
 
     @GetMapping(value = "/profile")
     public ResponseEntity<String> getSpringProfile() {
-        logger.info("Retrieving spring profile");
+        log.info("Retrieving spring profile");
         return ResponseEntity.ok().body(customerConfiguration.toString());
     }
 
